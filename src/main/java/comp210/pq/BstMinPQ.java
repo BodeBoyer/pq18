@@ -76,7 +76,7 @@ public class BstMinPQ<K extends Comparable<K>> implements MinPriorityQueue<K> {
   @Override
   public K pollMin() {
     if (root == null) {
-      throw new UnsupportedOperationException();
+      throw new NoSuchElementException();
     }
     BstNode<K> parent = null;
     BstNode<K> current = root;
