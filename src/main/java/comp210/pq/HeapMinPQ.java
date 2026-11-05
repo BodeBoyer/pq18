@@ -94,7 +94,7 @@ public class HeapMinPQ<K extends Comparable<K>> implements MinPriorityQueue<K> {
       int p = parent(i);
 
       if (!less(i,p)) {
-        break
+        break;
       }
 
       swap(i, p);
