@@ -74,7 +74,7 @@ public class HeapMinPQ<K extends Comparable<K>> implements MinPriorityQueue<K> {
   @Override
   public K pollMin() {
     if (size == 0) {
-      throw new UnsupportedOperationException("HeapMinPQ.pollMin is not implemented yet");
+      throw new NoSuchElementException();
     }
     K minimum = data[0];
 
