@@ -111,6 +111,13 @@ public class HeapMinPQ<K extends Comparable<K>> implements MinPriorityQueue<K> {
       if (rightChild < size && less(rightChild,smallerChild)) {
         smallerChild = rightChild;
       }
+
+      if (!less(smallerChild, i)) {
+        break;
+      }
+
+      swap(i, smallerChild);
+      i = smallerChild;
     }
   }
 
@@ -121,38 +128,54 @@ public class HeapMinPQ<K extends Comparable<K>> implements MinPriorityQueue<K> {
   // AI-permitted: you may ask LearnWithAI to write this.
   /** Returns the index of the parent of index {@code i}. */
   private int parent(int i) {
-    throw new UnsupportedOperationException("HeapMinPQ.parent is not implemented yet");
+    return (i-1) / 2;
   }
 
   // AI-permitted: you may ask LearnWithAI to write this.
   /** Returns the index of the left child of index {@code i}. */
   private int left(int i) {
-    throw new UnsupportedOperationException("HeapMinPQ.left is not implemented yet");
+    return 2 * i + 1;
   }
 
   // AI-permitted: you may ask LearnWithAI to write this.
   /** Returns the index of the right child of index {@code i}. */
   private int right(int i) {
-    throw new UnsupportedOperationException("HeapMinPQ.right is not implemented yet");
+    return 2 * i + 2;
   }
 
   // AI-permitted: you may ask LearnWithAI to write this.
   /** Swaps the keys at indexes {@code i} and {@code j}. */
   private void swap(int i, int j) {
-    throw new UnsupportedOperationException("HeapMinPQ.swap is not implemented yet");
+    K temp = data[i];
+    data[i] = data[j];
+    data[j] = temp;
   }
 
   // AI-permitted: you may ask LearnWithAI to write this.
   /** Doubles the capacity of {@code data}, keeping the keys already stored. */
   private void grow() {
-    throw new UnsupportedOperationException("HeapMinPQ.grow is not implemented yet");
+    K[] larger = newArray(data.length * 2);
+    for (int i = 0; i < size; i++) {
+      larger[i] = data[i];
+    }
+
+    data = larger;
   }
 
   // AI-permitted: you may ask LearnWithAI to write this.
   /** Returns the heap's keys in array order, for example {@code [1, 4, 2]}. */
   @Override
   public String toString() {
-    return "HeapMinPQ (toString not written yet)";
+    StringBuilder result = new StringBuilder("[");
+    for (int i = 0; i < size; i++) {
+      if (i > 0) {
+        result.append(", ");
+      }
+      result.append(data[i]);
+    }
+
+    result.append("]");
+    return result.toString();
   }
 
   @Override
